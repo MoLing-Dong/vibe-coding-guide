@@ -1,0 +1,22 @@
+# dependencies
+node_modules
+
+# build output
+.next
+out
+dist
+docs/.vitepress/.temp
+docs/.vitepress/cache
+docs/.vitepress/dist
+
+# local environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# logs and caches
+*.log
+tsconfig.tsbuildinfo
+.DS_Store
+coverage
