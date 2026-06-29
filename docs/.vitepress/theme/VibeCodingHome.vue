@@ -1,5 +1,16 @@
 <template>
   <main class="vibe-home">
+    <!-- SVG 液态玻璃折射滤镜定义 — feTurbulence 生成有机噪声，feDisplacementMap 实现像素位移折射 -->
+    <svg class="lg-svg-defs" aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0">
+      <defs>
+        <filter id="liquid-glass-refract" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="92" result="noise" />
+          <feGaussianBlur in="noise" stdDeviation="2" result="softNoise" />
+          <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+
     <section class="vibe-hero" :aria-label="content.heroLabel">
       <div class="vibe-hero__ambient" aria-hidden="true">
         <span class="vibe-light vibe-light--one"></span>
@@ -19,13 +30,13 @@
               <span>{{ content.primaryCta }}</span>
               <span class="vibe-button__icon" aria-hidden="true">-&gt;</span>
             </a>
-            <a class="vibe-button vibe-button--glass" :href="content.secondaryHref">
+            <a class="vibe-button vibe-button--glass lg" :href="content.secondaryHref">
               <span>{{ content.secondaryCta }}</span>
             </a>
           </div>
 
           <div class="vibe-metrics" :aria-label="content.metricsLabel">
-            <div v-for="metric in content.metrics" :key="metric.value" class="vibe-metric">
+            <div v-for="metric in content.metrics" :key="metric.value" class="vibe-metric lg">
               <strong>{{ metric.value }}</strong>
               <span>{{ metric.label }}</span>
             </div>
@@ -35,7 +46,7 @@
         <div class="vibe-stage vibe-reveal vibe-reveal--late" :aria-label="content.stageLabel">
           <div class="vibe-stage__halo" aria-hidden="true"></div>
 
-          <div class="vibe-glass vibe-command">
+          <div class="vibe-glass lg lg--strong vibe-command">
             <div class="vibe-command__bar">
               <span></span>
               <span></span>
@@ -55,7 +66,7 @@
             </div>
           </div>
 
-          <div class="vibe-glass vibe-agent">
+          <div class="vibe-glass lg lg--strong vibe-agent">
             <div class="vibe-agent__top">
               <span class="vibe-agent__status"></span>
               <strong>{{ content.agentTitle }}</strong>
@@ -69,7 +80,7 @@
             </div>
           </div>
 
-          <div class="vibe-glass vibe-plan">
+          <div class="vibe-glass lg lg--strong vibe-plan">
             <p>{{ content.planLabel }}</p>
             <ol>
               <li v-for="step in content.planSteps" :key="step">{{ step }}</li>
@@ -88,7 +99,7 @@
         <a
           v-for="tool in tools"
           :key="tool.title"
-          class="vibe-tool"
+          class="vibe-tool lg lg--floating lg--sheen"
           :href="tool.href"
           :style="{ '--tool-hue': tool.hue }"
         >
@@ -101,7 +112,7 @@
     </section>
 
     <section class="vibe-section vibe-section--path" :aria-label="content.pathLabel">
-      <div class="vibe-path-panel">
+        <div class="vibe-path-panel lg lg--strong">
         <div class="vibe-section__head">
           <p class="vibe-section__eyebrow">{{ content.pathEyebrow }}</p>
           <h2>{{ content.pathTitle }}</h2>
@@ -111,7 +122,7 @@
           <a
             v-for="(card, index) in cards"
             :key="card.title"
-            class="vibe-path-card"
+            class="vibe-path-card lg lg--floating"
             :href="card.href"
           >
             <span class="vibe-path-card__num">{{ String(index + 1).padStart(2, '0') }}</span>
@@ -130,7 +141,7 @@
           <p>{{ content.flowBody }}</p>
         </div>
         <div class="vibe-flow__steps">
-          <div v-for="step in content.flowSteps" :key="step.title" class="vibe-flow-step">
+          <div v-for="step in content.flowSteps" :key="step.title" class="vibe-flow-step lg">
             <span>{{ step.num }}</span>
             <div>
               <strong>{{ step.title }}</strong>
@@ -353,15 +364,31 @@ const cards = computed(() => content.value.cards)
 const visibleLines = ref(0)
 let timers = []
 
+/**
+ * 鼠标追踪镜面高光 — 模拟 Apple Liquid Glass 对触控/光标位置的动态响应
+ * 通过事件委托监听 pointermove，更新最近的 .lg 元素的 CSS 自定义属性
+ */
+const handlePointerMove = (e) => {
+  const target = e.target.closest?.('.lg')
+  if (!target) return
+  const rect = target.getBoundingClientRect()
+  const x = ((e.clientX - rect.left) / rect.width) * 100
+  const y = ((e.clientY - rect.top) / rect.height) * 100
+  target.style.setProperty('--lg-mx', `${x}%`)
+  target.style.setProperty('--lg-my', `${y}%`)
+}
+
 onMounted(() => {
   timers = [240, 620, 1020, 1460].map((delay, index) => (
     window.setTimeout(() => {
       visibleLines.value = index + 1
     }, delay)
   ))
+  window.addEventListener('pointermove', handlePointerMove, { passive: true })
 })
 
 onBeforeUnmount(() => {
   timers.forEach((timer) => window.clearTimeout(timer))
+  window.removeEventListener('pointermove', handlePointerMove)
 })
 </script>
