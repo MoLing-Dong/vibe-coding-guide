@@ -242,9 +242,7 @@
   box-shadow: 0 18px 42px rgba(37, 99, 235, 0.26);
 }
 
-.vibe-button--primary::before,
-.vibe-glass::before,
-.vibe-tool::before {
+.vibe-button--primary::before {
   position: absolute;
   inset: 0;
   content: "";
@@ -255,11 +253,8 @@
 }
 
 .vibe-button--glass {
-  border: 1px solid var(--vibe-line);
   color: var(--vibe-ink);
   background: var(--vibe-glass);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(20px) saturate(150%);
 }
 
 .vibe-button:hover {
@@ -290,16 +285,8 @@
 }
 
 .vibe-metric {
-  border: 1px solid var(--vibe-line);
   border-radius: 18px;
   padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.32);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.54);
-  backdrop-filter: blur(20px) saturate(150%);
-}
-
-.dark .vibe-metric {
-  background: rgba(255, 255, 255, 0.07);
 }
 
 .vibe-metric strong {
@@ -342,22 +329,6 @@
 
 .vibe-glass {
   position: absolute;
-  overflow: hidden;
-  border: 1px solid var(--vibe-line);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.3) 46%, rgba(255, 255, 255, 0.18)),
-    var(--vibe-glass);
-  box-shadow:
-    var(--vibe-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.76),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(28px) saturate(170%);
-}
-
-.dark .vibe-glass {
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05) 46%, rgba(255, 255, 255, 0.025)),
-    var(--vibe-glass);
 }
 
 .vibe-command {
@@ -626,18 +597,13 @@
 .vibe-tool {
   position: relative;
   min-height: 280px;
-  overflow: hidden;
-  border: 1px solid var(--vibe-line);
   border-radius: 30px;
   padding: 24px;
   color: var(--vibe-ink);
   background:
     radial-gradient(circle at 76% 18%, color-mix(in srgb, var(--tool-hue) 24%, transparent), transparent 44%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.06) 70%, rgba(255, 255, 255, 0.14) 100%),
     var(--vibe-glass);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.66),
-    0 20px 50px rgba(31, 48, 68, 0.1);
-  backdrop-filter: blur(24px) saturate(150%);
   transition:
     transform 220ms ease,
     box-shadow 220ms ease,
@@ -647,7 +613,8 @@
 .dark .vibe-tool {
   background:
     radial-gradient(circle at 76% 18%, color-mix(in srgb, var(--tool-hue) 28%, transparent), transparent 44%),
-    rgba(255, 255, 255, 0.055);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0.015) 70%, rgba(255, 255, 255, 0.04) 100%),
+    var(--vibe-glass);
 }
 
 .vibe-tool:hover {
@@ -698,18 +665,8 @@
 }
 
 .vibe-path-panel {
-  border: 1px solid var(--vibe-line);
   border-radius: 34px;
   padding: clamp(22px, 4vw, 36px);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.18)),
-    var(--vibe-glass);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(24px) saturate(150%);
-}
-
-.dark .vibe-path-panel {
-  background: rgba(255, 255, 255, 0.055);
 }
 
 .vibe-path {
@@ -721,47 +678,17 @@
 .vibe-path-card {
   position: relative;
   min-height: 220px;
-  overflow: hidden;
-  border: 1px solid var(--vibe-line);
   border-radius: 24px;
   padding: 20px;
   color: var(--vibe-ink);
-  background: rgba(255, 255, 255, 0.3);
   transition:
     transform 190ms ease,
-    background-color 190ms ease,
     border-color 190ms ease;
-}
-
-.dark .vibe-path-card {
-  background: rgba(255, 255, 255, 0.045);
-}
-
-.vibe-path-card::after {
-  position: absolute;
-  inset: auto 18px 18px;
-  height: 2px;
-  border-radius: 999px;
-  content: "";
-  background: linear-gradient(90deg, var(--vibe-teal), var(--vibe-blue), var(--vibe-rose));
-  transform: scaleX(0.22);
-  transform-origin: left;
-  transition: transform 220ms ease;
 }
 
 .vibe-path-card:hover {
   color: var(--vibe-ink);
   border-color: color-mix(in srgb, var(--vibe-blue) 34%, var(--vibe-line));
-  background: rgba(255, 255, 255, 0.46);
-  transform: translateY(-4px);
-}
-
-.dark .vibe-path-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.vibe-path-card:hover::after {
-  transform: scaleX(1);
 }
 
 .vibe-path-card__num {
@@ -811,16 +738,8 @@
   grid-template-columns: 54px minmax(0, 1fr);
   gap: 16px;
   align-items: start;
-  border: 1px solid var(--vibe-line);
   border-radius: 26px;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.34);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.52);
-  backdrop-filter: blur(20px) saturate(145%);
-}
-
-.dark .vibe-flow-step {
-  background: rgba(255, 255, 255, 0.055);
 }
 
 .vibe-flow-step > span {
@@ -1037,8 +956,6 @@
   .vibe-plan,
   .vibe-agent__wave span,
   .vibe-button--primary::before,
-  .vibe-glass::before,
-  .vibe-tool::before,
   .vibe-title em::after {
     animation: none !important;
   }

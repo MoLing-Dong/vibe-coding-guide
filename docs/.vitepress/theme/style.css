@@ -276,12 +276,19 @@ body,
   align-content: start;
   min-height: 178px;
   border: 1px solid color-mix(in srgb, var(--vp-c-text-1) 12%, transparent);
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 20px;
   color: inherit;
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, #f8fafc 6%);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.06) 70%, rgba(255, 255, 255, 0.14) 100%),
+    color-mix(in srgb, var(--vp-c-bg) 88%, #f8fafc 12%);
   text-decoration: none;
-  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.06),
+    0 12px 34px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   transition:
     transform 160ms ease,
     border-color 160ms ease,
@@ -322,9 +329,16 @@ body,
   max-width: 1072px;
   margin: 34px auto 24px;
   border: 1px solid color-mix(in srgb, var(--vp-c-text-1) 12%, transparent);
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 24px;
-  background: color-mix(in srgb, var(--vp-c-bg) 96%, #0f766e 4%);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.06) 100%),
+    color-mix(in srgb, var(--vp-c-bg) 92%, #0f766e 8%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
 }
 
 .home-strip h2 {
@@ -361,9 +375,16 @@ body,
 
 .callout-card {
   border: 1px solid color-mix(in srgb, var(--vp-c-text-1) 14%, transparent);
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 16px;
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, #0f766e 6%);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.06) 100%),
+    color-mix(in srgb, var(--vp-c-bg) 88%, #0f766e 12%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
 }
 
 .callout-card h3 {
@@ -388,7 +409,9 @@ body,
 .step-list li {
   counter-increment: steps;
   border-left: 3px solid #0f766e;
+  border-radius: 0 8px 8px 0;
   padding: 10px 0 10px 14px;
+  background: linear-gradient(90deg, color-mix(in srgb, #0f766e 6%, transparent), transparent 60%);
 }
 
 .step-list li::before {
