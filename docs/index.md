@@ -6,13 +6,15 @@ outline: false
 ---
 
 <script setup>
-import { inBrowser } from 'vitepress'
+import { inBrowser, withBase } from 'vitepress'
+
+const zhUrl = withBase('/zh/')
 
 if (inBrowser) {
-  window.location.href = '/zh/'
+  window.location.href = zhUrl
 }
 </script>
 
 # Vibe Coding 指南
 
-[进入中文文档](/zh/)
+<a :href="zhUrl">进入中文文档</a>

@@ -144,6 +144,7 @@
 </template>
 
 <script setup>
+import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const props = defineProps({
@@ -152,6 +153,8 @@ const props = defineProps({
     default: 'zh'
   }
 })
+
+const basePath = (path) => withBase(path)
 
 const homeContent = {
   zh: {
@@ -162,8 +165,8 @@ const homeContent = {
     actionsLabel: '首页主操作',
     primaryCta: '开始快速上手',
     secondaryCta: '安装工具',
-    primaryHref: '/zh/guides/quick-start',
-    secondaryHref: '/zh/guides/claude-code-install',
+    primaryHref: basePath('/zh/guides/quick-start'),
+    secondaryHref: basePath('/zh/guides/claude-code-install'),
     metricsLabel: '文档覆盖范围',
     metrics: [
       { value: '02', label: '安装指南' },
@@ -205,7 +208,7 @@ const homeContent = {
         title: 'Claude Code',
         desc: '终端原生的 AI 编程助手，适合深度理解仓库与多文件修改。',
         cta: '查看安装指南',
-        href: '/zh/guides/claude-code-install'
+        href: basePath('/zh/guides/claude-code-install')
       },
       {
         mark: 'OX',
@@ -213,7 +216,7 @@ const homeContent = {
         title: 'Codex CLI',
         desc: 'OpenAI 的本地编程代理，强调沙箱、审批流和可控执行。',
         cta: '查看安装指南',
-        href: '/zh/guides/codex-cli-install'
+        href: basePath('/zh/guides/codex-cli-install')
       },
       {
         mark: 'AI',
@@ -221,29 +224,29 @@ const homeContent = {
         title: '快速开始',
         desc: '用一个低风险任务跑通目标描述、代码修改和最终验证。',
         cta: '开始练习',
-        href: '/zh/guides/quick-start'
+        href: basePath('/zh/guides/quick-start')
       }
     ],
     cards: [
       {
         title: '快速开始',
         desc: '从一个小功能练习 AI 协作的完整闭环。',
-        href: '/zh/guides/quick-start'
+        href: basePath('/zh/guides/quick-start')
       },
       {
         title: '提示与上下文',
         desc: '写出让 AI 真正理解任务和项目的提示词。',
-        href: '/zh/api/chat'
+        href: basePath('/zh/api/chat')
       },
       {
         title: '协作管理',
         desc: '把需求、验收、边界和人机分工整理清楚。',
-        href: '/zh/admin/keys'
+        href: basePath('/zh/admin/keys')
       },
       {
         title: '交付排障',
         desc: '处理跑偏、测试失败、质量下滑和上线检查。',
-        href: '/zh/ops/troubleshooting'
+        href: basePath('/zh/ops/troubleshooting')
       }
     ]
   },
@@ -255,8 +258,8 @@ const homeContent = {
     actionsLabel: 'Primary home actions',
     primaryCta: 'Start quick start',
     secondaryCta: 'Install tools',
-    primaryHref: '/en/guides/quick-start',
-    secondaryHref: '/en/guides/quick-start',
+    primaryHref: basePath('/en/guides/quick-start'),
+    secondaryHref: basePath('/en/guides/quick-start'),
     metricsLabel: 'Documentation coverage',
     metrics: [
       { value: '02', label: 'tool guides' },
@@ -298,7 +301,7 @@ const homeContent = {
         title: 'Claude Code',
         desc: 'A terminal-native AI coding assistant for understanding repos and editing across files.',
         cta: 'Open guide',
-        href: '/en/guides/quick-start'
+        href: basePath('/en/guides/quick-start')
       },
       {
         mark: 'OX',
@@ -306,7 +309,7 @@ const homeContent = {
         title: 'Codex CLI',
         desc: 'OpenAI local coding agent with sandboxing, approval flow, and controlled execution.',
         cta: 'Open guide',
-        href: '/en/guides/quick-start'
+        href: basePath('/en/guides/quick-start')
       },
       {
         mark: 'AI',
@@ -314,29 +317,29 @@ const homeContent = {
         title: 'Quick start',
         desc: 'Run one low-risk task through prompting, implementation, and verification.',
         cta: 'Start practice',
-        href: '/en/guides/quick-start'
+        href: basePath('/en/guides/quick-start')
       }
     ],
     cards: [
       {
         title: 'Quick start',
         desc: 'Practice the full AI collaboration loop with one small feature.',
-        href: '/en/guides/quick-start'
+        href: basePath('/en/guides/quick-start')
       },
       {
         title: 'Prompting and context',
         desc: 'Write prompts that help AI understand the task and the project.',
-        href: '/en/api/chat'
+        href: basePath('/en/api/chat')
       },
       {
         title: 'Collaboration management',
         desc: 'Clarify requirements, acceptance, boundaries, and human roles.',
-        href: '/en/admin/keys'
+        href: basePath('/en/admin/keys')
       },
       {
         title: 'Delivery troubleshooting',
         desc: 'Handle drift, failing tests, quality regressions, and launch checks.',
-        href: '/en/ops/troubleshooting'
+        href: basePath('/en/ops/troubleshooting')
       }
     ]
   }
