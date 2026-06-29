@@ -118,7 +118,7 @@ export default defineConfig({
       title: 'Vibe Coding 指南',
       description: '用 AI 编程助手完成真实项目的实践教程',
       themeConfig: {
-        nav: [],
+        nav: [{ text: '赞助商', link: '/sponsors' }],
         sidebar: zhSidebar,
         outline: { label: '本页目录', level: [2, 3] },
         docFooter: {
@@ -142,7 +142,7 @@ export default defineConfig({
       title: 'Vibe Coding Guide',
       description: 'A practical guide to building software with AI coding assistants',
       themeConfig: {
-        nav: [],
+        nav: [{ text: 'Sponsors', link: '/sponsors' }],
         sidebar: enSidebar,
         outline: { label: 'On this page', level: [2, 3] },
         docFooter: {

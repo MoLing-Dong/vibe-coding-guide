@@ -12,6 +12,46 @@
   padding: 0 !important;
 }
 
+.vibe-home-page .sponsor-section {
+  width: min(1120px, calc(100% - 48px));
+  margin: 24px auto 0;
+  border-top: 1px solid color-mix(in srgb, var(--vibe-line) 100%, transparent);
+  padding-top: 26px;
+}
+
+.vibe-home-page .sponsor-section__title {
+  color: var(--vibe-ink);
+}
+
+.vibe-home-page .sponsor-section__body,
+.vibe-home-page .sponsor-card__meta p {
+  color: var(--vibe-ink-soft);
+}
+
+.vibe-home-page .sponsor-tier__head h3 {
+  color: var(--vibe-ink);
+}
+
+.vibe-home-page .sponsor-card {
+  border-color: color-mix(in srgb, var(--vibe-line) 100%, transparent);
+  background: color-mix(in srgb, var(--vibe-glass) 82%, #ffffff 18%);
+}
+
+.vibe-home-page .sponsor-card:hover {
+  border-color: color-mix(in srgb, var(--vibe-teal) 34%, var(--vibe-line) 66%);
+}
+
+@media (max-width: 767px) {
+  .vibe-home-page .sponsor-section {
+    width: calc(100% - 24px);
+    margin-top: 16px;
+  }
+
+  .vibe-home-page .sponsor-card {
+    flex-direction: column;
+  }
+}
+
 .vibe-home {
   --vibe-bg: #edf5f8;
   --vibe-ink: #12202a;

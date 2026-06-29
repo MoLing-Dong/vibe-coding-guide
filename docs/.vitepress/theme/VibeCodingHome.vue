@@ -157,6 +157,7 @@
 <script setup>
 import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useLiquidGlassPointer } from './use-liquid-glass-pointer'
 
 const props = defineProps({
   locale: {
@@ -364,19 +365,7 @@ const cards = computed(() => content.value.cards)
 const visibleLines = ref(0)
 let timers = []
 
-/**
- * 鼠标追踪镜面高光 — 模拟 Apple Liquid Glass 对触控/光标位置的动态响应
- * 通过事件委托监听 pointermove，更新最近的 .lg 元素的 CSS 自定义属性
- */
-const handlePointerMove = (e) => {
-  const target = e.target.closest?.('.lg')
-  if (!target) return
-  const rect = target.getBoundingClientRect()
-  const x = ((e.clientX - rect.left) / rect.width) * 100
-  const y = ((e.clientY - rect.top) / rect.height) * 100
-  target.style.setProperty('--lg-mx', `${x}%`)
-  target.style.setProperty('--lg-my', `${y}%`)
-}
+useLiquidGlassPointer()
 
 onMounted(() => {
   timers = [240, 620, 1020, 1460].map((delay, index) => (
@@ -384,11 +373,9 @@ onMounted(() => {
       visibleLines.value = index + 1
     }, delay)
   ))
-  window.addEventListener('pointermove', handlePointerMove, { passive: true })
 })
 
 onBeforeUnmount(() => {
   timers.forEach((timer) => window.clearTimeout(timer))
-  window.removeEventListener('pointermove', handlePointerMove)
 })
 </script>
