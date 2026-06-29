@@ -29,6 +29,18 @@ const zhSidebar = [
     ]
   },
   {
+    text: '进阶玩法',
+    items: [
+      { text: '完整 AI 编程会话', link: '/zh/advanced/session-workflow' },
+      { text: '上下文工程', link: '/zh/advanced/context-engineering' },
+      { text: 'AI Debug 工作流', link: '/zh/advanced/debugging-workflow' },
+      { text: 'AI 代码审查', link: '/zh/advanced/code-review' },
+      { text: '安全重构', link: '/zh/advanced/refactoring' },
+      { text: '多角色协作', link: '/zh/advanced/multi-agent' },
+      { text: '项目级 AGENTS.md', link: '/zh/advanced/agents-md' }
+    ]
+  },
+  {
     text: '交付排障',
     items: [
       { text: '常见问题排查', link: '/zh/ops/troubleshooting' },
@@ -60,6 +72,18 @@ const enSidebar = [
       { text: 'Requirements and Acceptance', link: '/en/admin/keys' },
       { text: 'Workflow Breakdown', link: '/en/admin/channels' },
       { text: 'Human and AI Roles', link: '/en/admin/users' }
+    ]
+  },
+  {
+    text: 'Advanced Patterns',
+    items: [
+      { text: 'Full AI Coding Session', link: '/en/advanced/session-workflow' },
+      { text: 'Context Engineering', link: '/en/advanced/context-engineering' },
+      { text: 'AI Debug Workflow', link: '/en/advanced/debugging-workflow' },
+      { text: 'AI Code Review', link: '/en/advanced/code-review' },
+      { text: 'Safe Refactoring', link: '/en/advanced/refactoring' },
+      { text: 'Multi-Role Collaboration', link: '/en/advanced/multi-agent' },
+      { text: 'Project-Level AGENTS.md', link: '/en/advanced/agents-md' }
     ]
   },
   {
