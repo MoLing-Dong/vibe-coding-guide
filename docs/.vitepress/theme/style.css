@@ -44,6 +44,104 @@ body,
   padding: 0 !important;
 }
 
+.sponsor-section--aside {
+  margin-top: 22px;
+}
+
+.sponsor-section__head--compact {
+  margin-bottom: 10px;
+}
+
+.sponsor-card-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.sponsor-card--compact {
+  display: grid;
+  grid-template-rows: minmax(92px, auto) auto;
+  min-height: 136px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, var(--vp-c-brand-1) 12%);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--vp-c-bg) 96%, #ffffff 4%);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 160ms ease;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.54);
+}
+
+.sponsor-card--compact:hover {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 24%, var(--vp-c-divider) 76%);
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.56);
+  text-decoration: none;
+  transform: translateX(1px);
+}
+
+.sponsor-card__brand {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 18px 16px 16px;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(15, 118, 110, 0.08), transparent 46%),
+    linear-gradient(180deg, color-mix(in srgb, var(--vp-c-bg) 100%, #f3f7f6 0%), color-mix(in srgb, var(--vp-c-bg) 94%, #eff6f5 6%));
+}
+
+.dark .sponsor-card__brand {
+  background:
+    radial-gradient(circle at 50% 22%, rgba(45, 212, 191, 0.12), transparent 46%),
+    linear-gradient(180deg, color-mix(in srgb, var(--vp-c-bg) 94%, #0f172a 6%), color-mix(in srgb, var(--vp-c-bg) 88%, #0f172a 12%));
+}
+
+.sponsor-card__badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 999px;
+  color: var(--vp-c-brand-1);
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.sponsor-card__brand strong {
+  max-width: 100%;
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  font-weight: 680;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.sponsor-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 92%, transparent);
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--vp-c-bg) 98%, #ffffff 2%);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.sponsor-card__arrow {
+  color: var(--vp-c-brand-1);
+  font-size: 12px;
+  line-height: 1;
+}
+
 .sponsor-landing {
   position: relative;
   width: min(1080px, calc(100% - 40px));
